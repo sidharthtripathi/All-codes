@@ -1,46 +1,62 @@
-#include <iostream>
+ #include <bits/stdc++.h>
 using namespace std;
-int main(){
-int m,n;
-cin>>m>>n;
-int a[m][n];
-for(int i = 0 ; i<m ; i++){
-    for(int j = 0 ; j<n ; j++){
-        cin>>a[i][j];
-    }
-}
-int i=0,j=0;
+void exit_point(vector <vector<int>> &a){
+int n = a.size();
+int m = a[0].size();
+int i = 0 , j = 0;
 int dir = 0;
-while(i<=m-1 and j<=n-1){
-if(a[i][j]==1){
-    dir++;
-    if(dir==4){
-        dir=0;
-    }
+while(true){
+dir = (dir + a[i][j])%4;;
+if(dir == 0){
+    i++;
 }
-if(dir==0){
-    i=i;
+else if(dir == 1){
     j++;
 }
-else if(dir ==1){
-    i++;
-    j=j;
-}
 else if(dir == 2){
-    i=i;
-    j--;
-}
-else{
-    j=j;
     i--;
 }
+else if(dir == 3){
+    j--;
+}
+// to get out
+if(i<0){
+    i++;
+    break;
+}
+else if(j<0){
+    j++;
+    break;
+}
+else if(i>=a.size()){
+    i--;
+    break;
+}
+else if(j>=a[0].size()){
+    j--;
+    break;
+}
+}
+cout<<i<<" "<<j;
 
 }
-if(i>m-1)
-    i=i-1;
-if(j>n-1)
-    j--;
-cout<<i<<endl<<j<<endl;
+void fill_array(vector <vector<int >> &ques , int n , int m){
+for(int i = 0 ; i<n ; i++){
+    vector <int> temp_arr;
+    for(int j = 0 ; j<m ; j++){
+        int temp;
+        cin>>temp;
+        temp_arr.push_back(temp);
 
+    }
+    ques.push_back(temp_arr);
+}
+}
 
+int main(){
+int n;cin>>n;
+int m; cin>>m;
+vector <vector <int>> ques;
+fill_array(ques,n,m);
+exit_point(ques);
 }
