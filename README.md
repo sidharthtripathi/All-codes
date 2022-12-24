@@ -1,2 +1,3 @@
 # All Codes
-This directory contains lot of Random question 
+Questions are just random and not organised.
+Check out other repos
